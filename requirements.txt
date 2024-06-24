@@ -1,0 +1,11 @@
+geopandas
+rasterio
+xarray
+rioxarray
+pystac-client
+pystac
+netCDF4
+matplotlib
+odc-stac
+duckdb
+lonboard
