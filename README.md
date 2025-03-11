@@ -1,78 +1,61 @@
-# Python project template
+# basegeospatialproject
 
-This is a template repository for any Python project that comes with the following dev tools:
+<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
+    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
+</a>
 
-* `ruff`: identifies many errors and style issues (`flake8`, `isort`, `pyupgrade`)
-* `black`: auto-formats code
+A base geospatial project for data science
 
-Those checks are run as pre-commit hooks using the `pre-commit` library.
-
-It includes `pytest` for testing plus the `pytest-cov` plugin to measure coverage.
-
-The checks and tests are all run using Github actions on every pull request and merge to main.
-
-This repository is setup for Python 3.11. To change the version:
-1. Change the `image` argument in `.devcontainer/devcontainer.json` (see [https://github.com/devcontainers/images/tree/main/src/python](https://github.com/devcontainers/images/tree/main/src/python#configuration) for a list of pre-built Docker images)
-1. Change the config options in `.precommit-config.yaml`
-1. Change the version number in `.github/workflows/python.yaml`
-
-## Development instructions
-
-## With devcontainer
-
-This repository comes with a devcontainer (a Dockerized Python environment). If you open it in Codespaces, it should automatically initialize the devcontainer.
-
-Locally, you can open it in VS Code with the Dev Containers extension installed.
-
-## Without devcontainer
-
-If you can't or don't want to use the devcontainer, then you should first create a virtual environment:
+## Project Organization
 
 ```
-python3 -m venv .venv
-source .venv/bin/activate
+├── LICENSE            <- Open-source license if one is chosen
+├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
+├── README.md          <- The top-level README for developers using this project.
+├── data
+│   ├── external       <- Data from third party sources.
+│   ├── interim        <- Intermediate data that has been transformed.
+│   ├── processed      <- The final, canonical data sets for modeling.
+│   └── raw            <- The original, immutable data dump.
+│
+├── docs               <- A default mkdocs project; see www.mkdocs.org for details
+│
+├── models             <- Trained and serialized models, model predictions, or model summaries
+│
+├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
+│                         the creator's initials, and a short `-` delimited description, e.g.
+│                         `1.0-jqp-initial-data-exploration`.
+│
+├── pyproject.toml     <- Project configuration file with package metadata for 
+│                         basegeospatialproject and configuration for tools like black
+│
+├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+│
+├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
+│   └── figures        <- Generated graphics and figures to be used in reporting
+│
+├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+│                         generated with `pip freeze > requirements.txt`
+│
+├── setup.cfg          <- Configuration file for flake8
+│
+└── basegeospatialproject   <- Source code for use in this project.
+    │
+    ├── __init__.py             <- Makes basegeospatialproject a Python module
+    │
+    ├── config.py               <- Store useful variables and configuration
+    │
+    ├── dataset.py              <- Scripts to download or generate data
+    │
+    ├── features.py             <- Code to create features for modeling
+    │
+    ├── modeling                
+    │   ├── __init__.py 
+    │   ├── predict.py          <- Code to run model inference with trained models          
+    │   └── train.py            <- Code to train models
+    │
+    └── plots.py                <- Code to create visualizations
 ```
 
-Then install the dev tools and pre-commit hooks:
+--------
 
-```
-python3 -m pip install --user -r requirements-dev.txt
-pre-commit install
-```
-
-## Adding code and tests
-
-This repository starts with a very simple `main.py` and a test for it at `tests/main_test.py`.
-You'll want to replace that with your own code, and you'll probably want to add additional files
-as your code grows in complexity.
-
-When you're ready to run tests, run:
-
-```
-python3 -m pytest
-```
-
-# File breakdown
-
-Here's a short explanation of each file/folder in this template:
-
-* `.devcontainer`: Folder containing files used for setting up a devcontainer
-  * `devcontainer.json`: File configuring the devcontainer, includes VS Code settings
-* `.github`: Folder for Github-specific files and folders
-  * `workflows`: Folder containing Github actions config files
-    * `python.yaml`: File configuring Github action that runs tools and tests
-* `tests`: Folder containing Python tests
-  * `main_test.py`: File with pytest-style tests of main.py
-* `.gitignore`: File describing what file patterns Git should never track
-* `.pre-commit-config.yaml`: File listing all the pre-commit hooks and args
-* `main.py`: The main (and currently only) Python file for the program
-* `pyproject.toml`: File configuring most of the Python dev tools
-* `README.md`: You're reading it!
-* `requirements-dev.txt`: File listing all PyPi packages required for development
-* `requirements.txt`: File listing all PyPi packages required for production
-
-For a longer explanation, read [this blog post](http://blog.pamelafox.org/2022/09/how-i-setup-python-project.html).
-
-# 🔎 Found an issue or have an idea for improvement?
-
-Help me make this template repository better by letting us know and opening an issue!

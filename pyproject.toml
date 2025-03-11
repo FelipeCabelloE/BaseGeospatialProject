@@ -1,17 +1,61 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "basegeospatialproject"
+version = "0.0.1"
+description = "A base geospatial project for data science"
+authors = [
+  { name = "felipecabelloe" },
+]
+
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    
+]
+requires-python = "~=3.12"
+dependencies = [
+    "geopandas>=1.0.1",
+    "ipython>=9.0.2",
+    "jupyterlab>=4.3.5",
+    "loguru>=0.7.3",
+    "matplotlib>=3.10.1",
+    "mkdocs>=1.6.1",
+    "notebook>=7.3.2",
+    "numpy>=2.2.3",
+    "pandas>=2.2.3",
+    "pip>=25.0.1",
+    "pyarrow>=19.0.1",
+    "python-dotenv>=1.0.1",
+    "ruff>=0.9.10",
+    "scikit-learn>=1.6.1",
+    "tqdm>=4.67.1",
+    "typer>=0.15.2",
+    "xarray>=2025.1.2",
+]
+
+
 [tool.ruff]
-line-length = 120
-target-version = "py311"
-select = ["E", "F", "I", "UP"]
-ignore = ["D203"]
+line-length = 99
+src = ["basegeospatialproject"]
+include = ["pyproject.toml", "basegeospatialproject/**/*.py"]
 
-[tool.black]
-line-length = 120
-target-version = ["py311"]
+[tool.ruff.lint]
+extend-select = ["I"]  # Add import sorting
 
-[tool.pytest.ini_options]
-addopts = "-ra --cov"
-testpaths = ["tests"]
-pythonpath = ['.']
+[tool.ruff.lint.isort]
+known-first-party = ["basegeospatialproject"]
+force-sort-within-sections = true
 
-[tool.coverage.report]
-show_missing = true
+[tool.uv.sources]
+basegeospatialproject = { workspace = true }
+
+[dependency-groups]
+dev = [
+    "basegeospatialproject",
+    "pytest>=8.3.5",
+    "ruff>=0.9.10",
+]
+
